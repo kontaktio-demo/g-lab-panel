@@ -1,8 +1,13 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { createClient as createJsClient } from '@supabase/supabase-js';
+import { createDemoClient, isDemoMode } from '@/lib/demo';
 
 export async function createClient() {
+  if (isDemoMode()) {
+    // W trybie demo nie odwołujemy się do Supabase — dane idą z `lib/demo.ts`.
+    return createDemoClient() as unknown as ReturnType<typeof createServerClient>;
+  }
   const cookieStore = await cookies();
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -31,6 +36,9 @@ export async function createClient() {
  * Używać WYŁĄCZNIE w Route Handlers / Server Actions, NIGDY w komponentach klienckich.
  */
 export function createServiceClient() {
+  if (isDemoMode()) {
+    return createDemoClient() as unknown as ReturnType<typeof createJsClient>;
+  }
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) {

@@ -1,12 +1,27 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
+import { isDemoMode } from '@/lib/demo';
 
 /**
  * Wymusza ważną sesję dla wszystkich tras poza /login (i statykami).
  * Niezalogowani -> redirect na /login.
  * Zalogowani odwiedzający /login -> redirect na /.
+ *
+ * W trybie DEMO (brak NEXT_PUBLIC_SUPABASE_URL) — całość pomijamy,
+ * panel jest dostępny od razu, bez logowania.
  */
 export async function updateSession(request: NextRequest) {
+  if (isDemoMode()) {
+    const url = request.nextUrl;
+    if (url.pathname.startsWith('/login')) {
+      const redirectUrl = url.clone();
+      redirectUrl.pathname = '/';
+      redirectUrl.search = '';
+      return NextResponse.redirect(redirectUrl);
+    }
+    return NextResponse.next({ request });
+  }
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(

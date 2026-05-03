@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { isDemoMode } from '@/lib/demo';
 import LogoutButton from './LogoutButton';
 
 export default async function Topbar({ title, subtitle, actions }: {
@@ -8,12 +9,23 @@ export default async function Topbar({ title, subtitle, actions }: {
 }) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
+  const demo = isDemoMode();
 
   return (
     <header className="sticky top-0 z-20 bg-bg/85 backdrop-blur-md border-b border-border">
       <div className="flex items-center gap-4 px-5 md:px-8 py-4">
         <div className="min-w-0 flex-1">
-          <h1 className="section-title truncate">{title}</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="section-title truncate">{title}</h1>
+            {demo && (
+              <span
+                title="Panel działa na danych przykładowych. Brak Supabase i backendu — zmiany nie są zapisywane."
+                className="badge-accent text-[10px] uppercase tracking-widest shrink-0"
+              >
+                Tryb demo
+              </span>
+            )}
+          </div>
           {subtitle && <p className="section-subtitle truncate">{subtitle}</p>}
         </div>
         <div className="flex items-center gap-2 shrink-0">
@@ -25,7 +37,7 @@ export default async function Topbar({ title, subtitle, actions }: {
             <div className="hidden md:block text-xs text-text-muted max-w-[160px] truncate">
               {user?.email}
             </div>
-            <LogoutButton />
+            {!demo && <LogoutButton />}
           </div>
         </div>
       </div>
