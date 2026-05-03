@@ -82,6 +82,26 @@ admin-panel/
 
 ## 🚀 Setup — krok po kroku
 
+### 0) Tryb DEMO (bez konfiguracji, bez logowania)
+
+Chcesz tylko zobaczyć **wygląd i funkcje** panelu? Nie musisz nic konfigurować.
+
+```bash
+npm install
+npm run dev
+```
+
+Bez ustawionej zmiennej `NEXT_PUBLIC_SUPABASE_URL` panel automatycznie startuje
+w **trybie DEMO**:
+
+- ✅ brak logowania — `/` ładuje się od razu (middleware przepuszcza),
+- ✅ Pulpit, Realizacje, Skrzynka zapytań i Katalog są wypełnione **danymi przykładowymi**,
+- ✅ filtry, wyszukiwarka, eksport CSV i akcje bulk działają (in-memory),
+- ⚠️ wszystkie zmiany są **tymczasowe** (znikają po restarcie procesu) — nic nie idzie do żadnej bazy.
+
+W prawym górnym rogu pojawi się znacznik **„Tryb demo"**. Aby wymusić ten tryb mimo
+ustawionych zmiennych, użyj `NEXT_PUBLIC_DEMO_MODE=1`.
+
 ### 1) Załóż projekt w Supabase
 
 1. Wejdź na <https://supabase.com> → **New project**.
