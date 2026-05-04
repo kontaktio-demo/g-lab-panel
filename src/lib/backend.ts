@@ -25,7 +25,7 @@ export class BackendError extends Error {
 }
 
 export function isBackendConfigured(): boolean {
-  // W trybie demo udajemy, że backend działa — leady i statystyki idą z lokalnych danych.
+  // W trybie demo udajemy, że backend działa - leady i statystyki idą z lokalnych danych.
   return isDemoMode() || !!BACKEND_URL;
 }
 
@@ -57,12 +57,12 @@ async function api<T>(path: string, init: RequestInit = {}, opts: { auth?: boole
   return (json as T) ?? (undefined as unknown as T);
 }
 
-/* ──────── Image uploads ──────── */
+/* -------- Image uploads -------- */
 
 /** Upload pojedynczego obrazu - backend sam konwertuje do AVIF/WebP/JPG (3 szerokości). */
 export async function uploadImage(file: File, opts: { folder: 'cover' | 'gallery' | 'misc'; alt?: string }): Promise<GalleryItem> {
   if (isDemoMode()) {
-    // Tryb demo — generujemy lokalny URL za pomocą object URL i udajemy odpowiedź backendu.
+    // Tryb demo - generujemy lokalny URL za pomocą object URL i udajemy odpowiedź backendu.
     const url = typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function'
       ? URL.createObjectURL(file)
       : `data:${file.type || 'image/jpeg'};base64,`;
@@ -90,7 +90,7 @@ export async function deleteImage(paths: string[]): Promise<{ ok: boolean; remov
   });
 }
 
-/* ──────── Leads ──────── */
+/* -------- Leads -------- */
 
 export async function listLeads(params: {
   status?: LeadStatus | '';
@@ -182,7 +182,7 @@ export async function leadsCsvBlobUrl(): Promise<string> {
   return URL.createObjectURL(blob);
 }
 
-/* ──────── Stats ──────── */
+/* -------- Stats -------- */
 
 export type DashboardStats = {
   realizations: { published: number; drafts: number; last_updated: string | null };

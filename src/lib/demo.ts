@@ -1,5 +1,5 @@
 /**
- * Tryb DEMO — pozwala uruchomić panel bez Supabase, bez backendu i bez logowania.
+ * Tryb DEMO - pozwala uruchomić panel bez Supabase, bez backendu i bez logowania.
  *
  * Uaktywnia się automatycznie, gdy nie jest ustawiona zmienna `NEXT_PUBLIC_SUPABASE_URL`.
  * W tym trybie:
@@ -14,17 +14,17 @@
 
 import type { CatalogCar, GalleryItem, Lead, Realization } from './types';
 
-/* ────────────────────────── detekcja trybu demo ────────────────────────── */
+/* -------------------------- detekcja trybu demo -------------------------- */
 
 export function isDemoMode(): boolean {
-  // Bez URL Supabase nie ma jak się połączyć — uruchamiamy tryb demo.
+  // Bez URL Supabase nie ma jak się połączyć - uruchamiamy tryb demo.
   // Można też wymusić: NEXT_PUBLIC_DEMO_MODE=1
   if (process.env.NEXT_PUBLIC_DEMO_MODE === '1') return true;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   return !url || url.trim() === '';
 }
 
-/* ────────────────────────── dane przykładowe ────────────────────────── */
+/* -------------------------- dane przykładowe -------------------------- */
 
 const COVER_PLACEHOLDER = (label: string, hue = 0) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(
@@ -55,7 +55,7 @@ const realizations: Realization[] = [
   {
     id: 'demo-1',
     slug: 'audi-rs6-stage2',
-    title: 'Audi RS6 4.0 TFSI — Stage 2',
+    title: 'Audi RS6 4.0 TFSI - Stage 2',
     samochod: 'Audi RS6 C8 (2022)',
     data: dateOnly(3),
     krotki_opis: 'Stage 2 + downpipe, mapa pod 100 oktanów. Realny wzrost mocy potwierdzony na hamowni.',
@@ -78,7 +78,7 @@ const realizations: Realization[] = [
   {
     id: 'demo-2',
     slug: 'bmw-m3-g80-stage1',
-    title: 'BMW M3 Competition G80 — Stage 1',
+    title: 'BMW M3 Competition G80 - Stage 1',
     samochod: 'BMW M3 G80 (2023)',
     data: dateOnly(8),
     krotki_opis: 'Optymalizacja dla codziennej jazdy + wyraźniejsza reakcja gazu.',
@@ -101,10 +101,10 @@ const realizations: Realization[] = [
   {
     id: 'demo-3',
     slug: 'vw-golf-7-gti-dpf-off',
-    title: 'VW Golf 7 GTI — odbicie po DPF/EGR (szkic)',
+    title: 'VW Golf 7 GTI - odbicie po DPF/EGR (szkic)',
     samochod: 'VW Golf 7 GTI (2017)',
     data: dateOnly(12),
-    krotki_opis: 'Realizacja w trakcie opisu — finalne pomiary już wkrótce.',
+    krotki_opis: 'Realizacja w trakcie opisu - finalne pomiary już wkrótce.',
     body: '',
     cover_url: COVER_PLACEHOLDER('Golf GTI', 120),
     cover: mkCover('Golf GTI', 120),
@@ -124,7 +124,7 @@ const realizations: Realization[] = [
   {
     id: 'demo-4',
     slug: 'porsche-cayenne-diesel-stage1',
-    title: 'Porsche Cayenne 3.0 TDI — Stage 1',
+    title: 'Porsche Cayenne 3.0 TDI - Stage 1',
     samochod: 'Porsche Cayenne 9Y0 (2019)',
     data: dateOnly(20),
     krotki_opis: 'Większy moment w niskim zakresie obrotów + lepsze reakcje skrzyni.',
@@ -205,7 +205,7 @@ const leads: Lead[] = [
     id: 'lead-3',
     source: 'wycena', status: 'in_progress',
     name: 'Tomasz Lis', email: 't.lis@example.com', phone: '+48 600 999 888',
-    message: 'Stage 2 do BMW M3 G80 — proszę o termin oraz wycenę z downpipem.',
+    message: 'Stage 2 do BMW M3 G80 - proszę o termin oraz wycenę z downpipem.',
     payload: { samochod: 'BMW M3 G80', stage: 'Stage 2' },
     user_agent: 'Mozilla/5.0', ip: '203.0.113.12',
     created_at: daysAgo(2), updated_at: daysAgo(1),
@@ -223,7 +223,7 @@ const leads: Lead[] = [
     id: 'lead-5',
     source: 'newsletter', status: 'spam',
     name: null, email: 'spam-bot@bad.example', phone: null,
-    message: 'Zakup tanich linków SEO — promocja!',
+    message: 'Zakup tanich linków SEO - promocja!',
     payload: {},
     user_agent: 'curl/8.0', ip: '198.51.100.7',
     created_at: daysAgo(6), updated_at: daysAgo(6),
@@ -232,14 +232,14 @@ const leads: Lead[] = [
     id: 'lead-6',
     source: 'wycena', status: 'new',
     name: 'Piotr Zieliński', email: 'piotr.z@example.com', phone: '+48 502 010 020',
-    message: 'Skoda Octavia RS Mk3 2.0 TDI — czy da się zrobić Stage 1?',
+    message: 'Skoda Octavia RS Mk3 2.0 TDI - czy da się zrobić Stage 1?',
     payload: { samochod: 'Skoda Octavia RS', silnik: '2.0 TDI' },
     user_agent: 'Mozilla/5.0', ip: '203.0.113.20',
     created_at: daysAgo(0), updated_at: daysAgo(0),
   },
 ];
 
-/* ────────────────────────── publiczne gettery ────────────────────────── */
+/* -------------------------- publiczne gettery -------------------------- */
 
 export const demoStore = {
   realizations,
@@ -248,7 +248,7 @@ export const demoStore = {
   leads,
 };
 
-/* ────────────────────────── stub klienta Supabase ────────────────────────── */
+/* -------------------------- stub klienta Supabase -------------------------- */
 
 type AnyRow = Record<string, unknown>;
 
@@ -351,7 +351,7 @@ class DemoQuery<T extends AnyRow> implements PromiseLike<{ data: T[] | T | null;
 }
 
 class DemoMutation implements PromiseLike<{ data: null; error: null }> {
-  // Mutacje są no-op — w trybie demo nic nie zapisujemy trwale.
+  // Mutacje są no-op - w trybie demo nic nie zapisujemy trwale.
   eq(): this { return this; }
   select(): this { return this; }
   async single() {

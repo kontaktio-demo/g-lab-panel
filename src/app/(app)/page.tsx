@@ -42,7 +42,7 @@ export default async function DashboardPage() {
     {
       label: 'Realizacje',
       value: realizationsCount ?? 0,
-      hint: `${publishedCount ?? 0} opublikowanych · ${draftsCount ?? 0} szkice`,
+      hint: `${publishedCount ?? 0} opublikowanych - ${draftsCount ?? 0} szkice`,
       href: '/realizacje',
       accent: true,
     },
@@ -54,10 +54,10 @@ export default async function DashboardPage() {
     },
     {
       label: 'Skrzynka zapytań',
-      value: leadsTotal ?? '—',
+      value: leadsTotal ?? '-',
       hint: leadsTotal == null
         ? 'Wymaga tabeli leads w Supabase'
-        : `${leadsNew ?? 0} nowych · ${leadsWeek ?? 0} z ostatnich 7 dni`,
+        : `${leadsNew ?? 0} nowych - ${leadsWeek ?? 0} z ostatnich 7 dni`,
       href: '/leads',
       accent: (leadsNew ?? 0) > 0,
     },
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
       label: 'Ostatnia zmiana',
       value: latest?.[0]?.updated_at
         ? new Date(latest[0].updated_at).toLocaleDateString('pl-PL')
-        : '—',
+        : '-',
       hint: latest?.[0]?.title ?? 'Brak edycji',
     },
   ];
@@ -83,7 +83,7 @@ export default async function DashboardPage() {
               </a>
             )}
             <Link href="/realizacje/new" className="btn-primary">
-              <span aria-hidden>＋</span> Nowa realizacja
+              <span aria-hidden>+</span> Nowa realizacja
             </Link>
           </div>
         }

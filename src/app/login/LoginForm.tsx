@@ -61,7 +61,7 @@ export default function LoginForm() {
       )}
 
       <button type="submit" disabled={pending} className="btn-primary w-full">
-        {pending ? 'Logowanie…' : 'Zaloguj się'}
+        {pending ? 'Logowanie...' : 'Zaloguj się'}
       </button>
     </form>
   );

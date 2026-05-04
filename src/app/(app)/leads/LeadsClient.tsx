@@ -167,11 +167,11 @@ export default function LeadsClient() {
           type="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Szukaj po imieniu, e-mail, telefonie, treści…"
+          placeholder="Szukaj po imieniu, e-mail, telefonie, treści..."
           className="field-input lg:w-72"
         />
         <button onClick={refresh} className="btn-secondary text-sm" disabled={loading}>
-          {loading ? 'Wczytywanie…' : '↻ Odśwież'}
+          {loading ? 'Wczytywanie...' : '↻ Odśwież'}
         </button>
         <button onClick={exportCsv} className="btn-ghost text-sm">⤓ Eksport CSV</button>
       </div>
@@ -185,9 +185,9 @@ export default function LeadsClient() {
         <div className="sticky top-2 z-10 card p-3 flex flex-wrap gap-2 items-center bg-bg-elev/95 backdrop-blur">
           <span className="text-sm">Zaznaczono: <strong>{selected.size}</strong></span>
           <div className="flex-1" />
-          <button onClick={() => setStatusFor([...selected], 'in_progress')} className="btn-ghost text-xs">→ W toku</button>
-          <button onClick={() => setStatusFor([...selected], 'done')}        className="btn-ghost text-xs">→ Zrealizowane</button>
-          <button onClick={() => setStatusFor([...selected], 'spam')}        className="btn-ghost text-xs">→ Spam</button>
+          <button onClick={() => setStatusFor([...selected], 'in_progress')} className="btn-ghost text-xs">{'->'} W toku</button>
+          <button onClick={() => setStatusFor([...selected], 'done')}        className="btn-ghost text-xs">{'->'} Zrealizowane</button>
+          <button onClick={() => setStatusFor([...selected], 'spam')}        className="btn-ghost text-xs">{'->'} Spam</button>
           <button onClick={bulkDelete} className="btn-danger text-xs">Usuń</button>
         </div>
       )}
@@ -240,7 +240,7 @@ export default function LeadsClient() {
                       </td>
                       <td className="px-3 py-3 text-text-muted">{LEAD_SOURCE_LABELS[l.source] ?? l.source}</td>
                       <td className="px-3 py-3">
-                        <div className="font-medium">{l.name || '—'}</div>
+                        <div className="font-medium">{l.name || '-'}</div>
                         {l.email && <div className="text-xs"><a href={`mailto:${l.email}`} className="hover:text-accent">{l.email}</a></div>}
                         {l.phone && <div className="text-xs"><a href={`tel:${l.phone}`} className="hover:text-accent">{l.phone}</a></div>}
                       </td>
@@ -281,7 +281,7 @@ export default function LeadsClient() {
             </table>
           </div>
           <div className="px-4 py-2 text-xs text-text-muted border-t border-border">
-            Pokazano {items.length} / {total} zapytań · auto-odświeżanie co 60 s
+            Pokazano {items.length} / {total} zapytań - auto-odświeżanie co 60 s
           </div>
         </div>
       )}

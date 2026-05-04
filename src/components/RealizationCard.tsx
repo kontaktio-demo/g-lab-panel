@@ -36,7 +36,7 @@ export default function RealizationCard({ r }: { r: Realization }) {
       </div>
       <div className="p-5">
         <div className="text-xs text-text-muted mb-2 truncate">
-          {formatDatePL(r.data)}{r.samochod ? ` · ${r.samochod}` : ''}
+          {formatDatePL(r.data)}{r.samochod ? ` - ${r.samochod}` : ''}
         </div>
         <h3 className="text-lg font-bold mb-1.5 leading-snug line-clamp-2">{r.title}</h3>
         <p className="text-sm text-text-muted line-clamp-2">{r.krotki_opis}</p>

@@ -7,7 +7,7 @@ import { isDemoMode } from '@/lib/demo';
  * Niezalogowani -> redirect na /login.
  * Zalogowani odwiedzający /login -> redirect na /.
  *
- * W trybie DEMO (brak NEXT_PUBLIC_SUPABASE_URL) — całość pomijamy,
+ * W trybie DEMO (brak NEXT_PUBLIC_SUPABASE_URL) - całość pomijamy,
  * panel jest dostępny od razu, bez logowania.
  */
 export async function updateSession(request: NextRequest) {

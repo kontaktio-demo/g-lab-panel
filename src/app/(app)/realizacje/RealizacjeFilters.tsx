@@ -28,7 +28,7 @@ export default function RealizacjeFilters({ initialQ, initialStatus }: { initial
         type="search"
         value={q}
         onChange={(e) => { setQ(e.target.value); update({ q: e.target.value }); }}
-        placeholder="Szukaj po tytule, marce, samochodzie, slug…"
+        placeholder="Szukaj po tytule, marce, samochodzie, slug..."
         className="field-input flex-1 min-w-0"
       />
       <div className="flex gap-2">
