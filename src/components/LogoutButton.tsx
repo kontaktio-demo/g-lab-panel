@@ -18,7 +18,7 @@ export default function LogoutButton() {
         router.refresh();
       })}
     >
-      {pending ? '…' : 'Wyloguj'}
+      {pending ? '...' : 'Wyloguj'}
     </button>
   );
 }

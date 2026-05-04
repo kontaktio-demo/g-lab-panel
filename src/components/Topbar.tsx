@@ -19,7 +19,7 @@ export default async function Topbar({ title, subtitle, actions }: {
             <h1 className="section-title truncate">{title}</h1>
             {demo && (
               <span
-                title="Panel działa na danych przykładowych. Brak Supabase i backendu — zmiany nie są zapisywane."
+                title="Panel działa na danych przykładowych. Brak Supabase i backendu - zmiany nie są zapisywane."
                 className="badge-accent text-[10px] uppercase tracking-widest shrink-0"
               >
                 Tryb demo

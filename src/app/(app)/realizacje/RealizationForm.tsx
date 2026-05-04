@@ -18,7 +18,7 @@ const BUCKET = process.env.NEXT_PUBLIC_SUPABASE_BUCKET || 'realizacje';
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 
 const USLUGI: { value: RealizationUsluga | ''; label: string }[] = [
-  { value: '',           label: '— wybierz —' },
+  { value: '',           label: '- wybierz -' },
   { value: 'chiptuning', label: 'Chiptuning' },
   { value: 'dpf-egr',    label: 'DPF / EGR' },
   { value: 'hamownia',   label: 'Hamownia' },
@@ -233,7 +233,7 @@ export default function RealizationForm({ initial }: Props) {
               <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
                 {kmGain != null && (
                   <div className="px-3 py-2 rounded-md bg-bg-elev-2 border border-border">
-                    Moc: <strong>{km0} → {km1} KM</strong>{' '}
+                    Moc: <strong>{km0} {'->'} {km1} KM</strong>{' '}
                     <span className={kmGain >= 0 ? 'text-success' : 'text-danger'}>
                       ({kmGain >= 0 ? '+' : ''}{kmGain} KM)
                     </span>
@@ -241,7 +241,7 @@ export default function RealizationForm({ initial }: Props) {
                 )}
                 {nmGain != null && (
                   <div className="px-3 py-2 rounded-md bg-bg-elev-2 border border-border">
-                    Moment: <strong>{nm0} → {nm1} Nm</strong>{' '}
+                    Moment: <strong>{nm0} {'->'} {nm1} Nm</strong>{' '}
                     <span className={nmGain >= 0 ? 'text-success' : 'text-danger'}>
                       ({nmGain >= 0 ? '+' : ''}{nmGain} Nm)
                     </span>
@@ -308,7 +308,7 @@ export default function RealizationForm({ initial }: Props) {
                 disabled={pendingDelete}
                 className="btn-danger w-full"
               >
-                {pendingDelete ? 'Usuwanie…' : 'Usuń realizację'}
+                {pendingDelete ? 'Usuwanie...' : 'Usuń realizację'}
               </button>
             )}
             <button type="button" className="btn-ghost w-full" onClick={() => router.push('/realizacje')}>
@@ -333,7 +333,7 @@ export default function RealizationForm({ initial }: Props) {
             title={title || 'Tytuł realizacji'}
             samochod={samochod}
             data={data}
-            krotki={krotki || 'Krótki opis pojawi się tutaj…'}
+            krotki={krotki || 'Krótki opis pojawi się tutaj...'}
             cover={cover?.url ?? ''}
           />
         </div>
@@ -358,7 +358,7 @@ function SubmitButton({ isEdit }: { isEdit: boolean }) {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending} className="btn-primary w-full">
-      {pending ? 'Zapisywanie…' : isEdit ? 'Zapisz zmiany' : 'Utwórz realizację'}
+      {pending ? 'Zapisywanie...' : isEdit ? 'Zapisz zmiany' : 'Utwórz realizację'}
     </button>
   );
 }
@@ -366,7 +366,7 @@ function SubmitButton({ isEdit }: { isEdit: boolean }) {
 /* ---------------- Cover uploader ---------------- */
 
 /**
- * Próbuje wgrywać przez backend (image pipeline → AVIF/WebP/JPG warianty).
+ * Próbuje wgrywać przez backend (image pipeline -> AVIF/WebP/JPG warianty).
  * Jeśli backend nie skonfigurowany lub padnie - fallback na bezpośredni upload do Supabase Storage.
  */
 async function uploadFile(file: File, folder: 'cover' | 'gallery'): Promise<GalleryItem> {
@@ -428,9 +428,9 @@ function CoverUploader({ value, onChange }: { value: GalleryItem | null; onChang
                      bg-bg-elev-2 text-text-muted hover:text-accent transition-colors
                      flex flex-col items-center justify-center text-sm"
         >
-          {uploading ? 'Wgrywanie…' : (
+          {uploading ? 'Wgrywanie...' : (
             <>
-              <span className="text-2xl mb-1">＋</span>
+              <span className="text-2xl mb-1">+</span>
               Wgraj zdjęcie
               <span className="text-xs text-text-muted/80 mt-0.5">JPG / PNG / WebP / HEIC</span>
             </>
@@ -509,7 +509,7 @@ function GalleryEditor({ items, onChange }: {
                      bg-bg-elev-2 text-text-muted hover:text-accent transition-colors
                      flex flex-col items-center justify-center text-xs"
         >
-          {uploading ? 'Wgrywanie…' : (<><span className="text-xl mb-0.5">＋</span>Dodaj zdjęcia</>)}
+          {uploading ? 'Wgrywanie...' : (<><span className="text-xl mb-0.5">+</span>Dodaj zdjęcia</>)}
         </button>
       </div>
       <input
@@ -540,7 +540,7 @@ function CardPreview({ title, samochod, data, krotki, cover }: {
       </div>
       <div className="p-5">
         <div className="text-xs text-text-muted mb-2">
-          {data ? new Date(data).toLocaleDateString('pl-PL') : '—'}{samochod ? ` · ${samochod}` : ''}
+          {data ? new Date(data).toLocaleDateString('pl-PL') : '-'}{samochod ? ` - ${samochod}` : ''}
         </div>
         <h3 className="text-lg font-bold mb-1.5 line-clamp-2">{title}</h3>
         <p className="text-sm text-text-muted line-clamp-2">{krotki}</p>

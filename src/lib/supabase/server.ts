@@ -5,7 +5,7 @@ import { createDemoClient, isDemoMode } from '@/lib/demo';
 
 export async function createClient() {
   if (isDemoMode()) {
-    // W trybie demo nie odwołujemy się do Supabase — dane idą z `lib/demo.ts`.
+    // W trybie demo nie odwołujemy się do Supabase - dane idą z `lib/demo.ts`.
     return createDemoClient() as unknown as ReturnType<typeof createServerClient>;
   }
   const cookieStore = await cookies();

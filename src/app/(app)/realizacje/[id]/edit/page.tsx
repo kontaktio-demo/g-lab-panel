@@ -27,8 +27,8 @@ export default async function EditRealizationPage({
     <>
       <Topbar
         title={r.title}
-        subtitle={`Edycja realizacji · /realizacje/${r.slug}`}
-        actions={<Link href="/realizacje" className="btn-secondary text-xs">← Wróć</Link>}
+        subtitle={`Edycja realizacji - /realizacje/${r.slug}`}
+        actions={<Link href="/realizacje" className="btn-secondary text-xs">{'<-'} Wróć</Link>}
       />
       <main className="p-5 md:p-8">
         <RealizationForm initial={r} />

@@ -87,12 +87,12 @@ export default async function KatalogPage() {
                   <tr key={c.id} className="hover:bg-bg-elev-2/50">
                     <td className="px-4 py-2.5">
                       <div className="font-medium">{c.marka} {c.model}</div>
-                      <div className="text-xs text-text-muted">{c.generacja} · {c.rok_od}-{c.rok_do}</div>
+                      <div className="text-xs text-text-muted">{c.generacja} - {c.rok_od}-{c.rok_do}</div>
                     </td>
                     <td className="px-4 py-2.5">{c.silnik}</td>
                     <td className="px-4 py-2.5 text-text-muted">{c.sterownik}</td>
-                    <td className="px-4 py-2.5 text-right tabular-nums">{c.moc_km_seryjna ?? '—'}</td>
-                    <td className="px-4 py-2.5 text-right tabular-nums text-accent font-semibold">{c.moc_km_tuning ?? '—'}</td>
+                    <td className="px-4 py-2.5 text-right tabular-nums">{c.moc_km_seryjna ?? '-'}</td>
+                    <td className="px-4 py-2.5 text-right tabular-nums text-accent font-semibold">{c.moc_km_tuning ?? '-'}</td>
                   </tr>
                 ))}
               </tbody>

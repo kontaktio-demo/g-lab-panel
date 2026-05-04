@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import LoginForm from './LoginForm';
 
 export const dynamic = 'force-dynamic';
-export const metadata = { title: 'Logowanie · G-Lab CMS' };
+export const metadata = { title: 'Logowanie - G-Lab CMS' };
 
 export default function LoginPage() {
   return (
@@ -22,7 +22,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-text-muted mt-6">
-          Konto utworzysz w Supabase → Authentication → Users.
+          Konto utworzysz w Supabase {'->'} Authentication {'->'} Users.
         </p>
       </div>
     </main>

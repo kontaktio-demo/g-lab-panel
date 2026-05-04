@@ -72,7 +72,7 @@ function Footer() {
   return (
     <div className="p-3 border-t border-border text-[11px] text-text-muted">
       <div className="px-3 py-2">
-        v1.1 · <a className="hover:text-accent" href="https://supabase.com" target="_blank" rel="noreferrer">Supabase</a> · <a className="hover:text-accent" href="https://render.com" target="_blank" rel="noreferrer">Render</a>
+        v1.1 - <a className="hover:text-accent" href="https://supabase.com" target="_blank" rel="noreferrer">Supabase</a> - <a className="hover:text-accent" href="https://render.com" target="_blank" rel="noreferrer">Render</a>
       </div>
     </div>
   );

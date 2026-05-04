@@ -10,7 +10,7 @@ export default function NewRealizationPage() {
       <Topbar
         title="Nowa realizacja"
         subtitle="Dodaj nową realizację do bazy"
-        actions={<Link href="/realizacje" className="btn-secondary text-xs">← Wróć</Link>}
+        actions={<Link href="/realizacje" className="btn-secondary text-xs">{'<-'} Wróć</Link>}
       />
       <main className="p-5 md:p-8">
         <RealizationForm />

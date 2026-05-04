@@ -1,13 +1,13 @@
 -- =====================================================================
---  G-Lab — kompletny schemat bazy Supabase (single source of truth).
+--  G-Lab - kompletny schemat bazy Supabase (single source of truth).
 --
 --  Z tego pliku korzystają:
 --    • backend (REST API na Render)
 --    • admin-panel (Next.js / Vercel)
 --    • strona publiczna (statyczna, runtime fetch z backendu)
 --
---  Wklej całość w: Supabase Dashboard → SQL Editor → New query → Run.
---  Skrypt jest idempotentny — można uruchamiać wielokrotnie.
+--  Wklej całość w: Supabase Dashboard -> SQL Editor -> New query -> Run.
+--  Skrypt jest idempotentny - można uruchamiać wielokrotnie.
 -- =====================================================================
 
 -- 1) Rozszerzenia ----------------------------------------------------
@@ -237,7 +237,7 @@ create policy "Authenticated delete realizacje bucket"
   using (bucket_id = 'realizacje');
 
 -- =====================================================================
--- 9) Migracje miękkie — dodawanie kolumn jeśli ktoś ma starszą wersję
+-- 9) Migracje miękkie - dodawanie kolumn jeśli ktoś ma starszą wersję
 -- =====================================================================
 alter table public.realizations add column if not exists marka      text not null default '';
 alter table public.realizations add column if not exists usluga     text not null default 'chiptuning';

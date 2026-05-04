@@ -43,8 +43,8 @@ export default async function RealizacjeListPage({
     <>
       <Topbar
         title="Realizacje"
-        subtitle={`${counts.total} łącznie · ${counts.published} opublikowanych · ${counts.drafts} szkiców`}
-        actions={<Link href="/realizacje/new" className="btn-primary"><span aria-hidden>＋</span> Nowa realizacja</Link>}
+        subtitle={`${counts.total} łącznie - ${counts.published} opublikowanych - ${counts.drafts} szkiców`}
+        actions={<Link href="/realizacje/new" className="btn-primary"><span aria-hidden>+</span> Nowa realizacja</Link>}
       />
 
       <main className="p-5 md:p-8 space-y-5">
@@ -67,10 +67,10 @@ export default async function RealizacjeListPage({
               <div className="text-5xl mb-3">★</div>
               <h2 className="text-xl font-bold mb-1">Brak realizacji</h2>
               <p className="text-text-muted mb-5">
-                Dodaj pierwszą realizację — pojawi się jako kafelek na stronie publicznej.
+                Dodaj pierwszą realizację - pojawi się jako kafelek na stronie publicznej.
               </p>
               <Link href="/realizacje/new" className="btn-primary inline-flex">
-                <span aria-hidden>＋</span> Dodaj realizację
+                <span aria-hidden>+</span> Dodaj realizację
               </Link>
             </div>
           ) : (

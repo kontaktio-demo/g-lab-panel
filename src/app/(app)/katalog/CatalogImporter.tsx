@@ -65,7 +65,7 @@ export default function CatalogImporter() {
         {file ? (
           <>
             <div className="font-medium">{file.name}</div>
-            <div className="text-xs text-text-muted">{(file.size / 1024).toFixed(1)} KB · kliknij aby zmienić</div>
+            <div className="text-xs text-text-muted">{(file.size / 1024).toFixed(1)} KB - kliknij aby zmienić</div>
           </>
         ) : (
           <>
@@ -108,7 +108,7 @@ export default function CatalogImporter() {
 
       <div className="mt-4 flex gap-2">
         <button type="button" onClick={submit} disabled={!file || pending} className="btn-primary">
-          {pending ? 'Importowanie…' : 'Importuj CSV'}
+          {pending ? 'Importowanie...' : 'Importuj CSV'}
         </button>
         {file && (
           <button type="button" onClick={() => pick(null)} className="btn-ghost">Wyczyść</button>

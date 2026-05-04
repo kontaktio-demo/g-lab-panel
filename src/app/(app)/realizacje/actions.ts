@@ -14,7 +14,7 @@ const USLUGI: readonly RealizationUsluga[] = ['chiptuning', 'dpf-egr', 'hamownia
 
 export type RealizationFormState = { error?: string; ok?: boolean } | null;
 
-/* ─────── helpers ─────── */
+/* ------- helpers ------- */
 
 function readJsonField<T>(formData: FormData, field: string, fallback: T): T {
   const raw = formData.get(field);
@@ -122,7 +122,7 @@ async function notifyRevalidate(slug: string): Promise<void> {
   }
 }
 
-/* ─────── actions ─────── */
+/* ------- actions ------- */
 
 export async function createRealization(_prev: RealizationFormState, formData: FormData): Promise<RealizationFormState> {
   const supabase = await createClient();
